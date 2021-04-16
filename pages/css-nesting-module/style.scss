@@ -1,3 +1,31 @@
 // css-nesting-module specific stylings here.
 
-  // default page level style may come here. _preview.css is most appropriate for general styles.
+// default page level style may come here. _preview.css is most appropriate for general styles.
+
+#app .parent div {
+  border: 1px dashed brown;
+  padding: 5px;
+  margin: 5px;
+}
+
+.parent .sibling {
+  ol,
+  ul {
+    > li {
+      margin: 2px 0;
+
+      #app.dark-theme & {
+        color: white;
+        background-color: black;
+      }
+
+      &:first-of-type {
+        margin-top: 32px;
+      }
+
+      &:last-of-type {
+        margin-bottom: 32px;
+      }
+    }
+  }
+}

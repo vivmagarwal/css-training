@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>css-nesting-module</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/stackoverflow-light.min.css" integrity="sha512-cG1IdFxqipi3gqLmksLtuk13C+hBa57a6zpWxMeoY3Q9O6ooFxq50DayCdm0QrDgZjMUn23z/0PMZlgft7Yp5Q==" crossorigin="anonymous"/>
-        <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../../preview.css">
     <link rel="shortcut icon" href="../../favicon.ico">
   </head>
@@ -21,13 +21,280 @@
         </ul>
       </div>
 
-      <div id="app"></div>
+      <div id="app" class="dark-theme">
+        <div class="parent">
+          parent
 
-      <div class="injected-readme">
-      <!-- inject:readme:md -->
-      <h1 id="css-nesting-module">Css Nesting Module</h1>
+          <div class="sibling sibling1">
+            sibling1
+            <div class="grandchild grandchild1">
+              grandchild 1
+            </div>
+          </div><!-- sibling1 ends -->
 
-      <!-- endinject -->
+          <div class="sibling sibling2">
+            sibling2
+            <ul>
+              <li>Coffee</li>
+              <li>Tea</li>
+              <li>Milk</li>
+            </ul>
+            <ol>
+              <li>Exercise</li>
+              <li>Wrok</li>
+              <li>play</li>
+            </ol>
+          </div><!-- sibling2 ends -->
+        
+        </div><!-- parent ends -->
+      </div><!-- #app ends -->
+
+
+      <div
+        class="injected-readme">
+        <!-- inject:readme:md -->
+        <h1 id="css-nesting-module">Css Nesting Module</h1>
+<p>Adam Arglye&#39;s recent tweet super excited me 🤩. But why?</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">@ Nest Level 1 (draft)<br><br>`@ nest &gt; div &gt; &amp; { color: red }`<br>`foo { &amp; bar { color: red } }`<a href="https://t.co/Q7IK7gbhdG">https://t.co/Q7IK7gbhdG</a></p>&mdash; Adam Argyle (@argyleink) <a href="https://twitter.com/argyleink/status/1369318354163437568?ref_src=twsrc%5Etfw">March 9, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>In the tweet Adam Argyle linked to the latest <a href="https://t.co/Q7IK7gbhdG?amp=1">CSS Nesting Module</a> draft that Tab Atkins and he are working on.</p>
+<p>✍️ <strong>Here are the few points that we are going to cover in this lesson:</strong></p>
+<ol>
+<li>We will begin by understand the problems that common CSS pre-processors like Sass solves using nesting.</li>
+<li>Look at some limitations of using pre-processors all the time.</li>
+<li>Finally the most exciting part!. Well learn how CSS Working Group is proposing to solve this problem. </li>
+</ol>
+<h2 id="the-problem">The Problem</h2>
+<p>Let&#39;s look at a very simple at the same time a very real world example:</p>
+<p><img src="img/img_1.png" alt=""></p>
+<p>There are two <code>.sibling</code> elements. They have a <code>.parent</code> which is inside our <code>#app</code>. Simple. One of the <code>.sibling</code> has different kind of lists inside it. The HTML structure could be something like the following:</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;parent&quot;</span>&gt;</span>
+    parent
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sibling sibling1&quot;</span>&gt;</span>
+      sibling1
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;grandchild grandchild1&quot;</span>&gt;</span>
+        grandchild 1
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-comment">&lt;!-- sibling1 ends --&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sibling sibling2&quot;</span>&gt;</span>
+      sibling2
+      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Coffee<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Tea<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Milk<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Exercise<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Wrok<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>play<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-comment">&lt;!-- sibling2 ends --&gt;</span>
+  
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-comment">&lt;!-- parent ends --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-comment">&lt;!-- #app ends --&gt;</span>
+</code></pre>
+<p>Scenario: There are some styles specific to different lists inside <code>.sibling</code>. The styles are specific to <code>.parent</code> inside <code>#app</code>. We need to reduce the <code>margin-top</code> and <code>margin-bottom</code> of list items to <code>2px</code> and keep the <code>margin-top</code> of the first list-item and the <code>margin-bottom</code> of the last list item to 32px.</p>
+<p>The css would look like the following:</p>
+<pre><code class="language-css"><span class="hljs-selector-id">#app</span> <span class="hljs-selector-class">.parent</span> <span class="hljs-selector-class">.sibling</span> <span class="hljs-selector-tag">ol</span> &gt; <span class="hljs-selector-tag">li</span>,
+<span class="hljs-selector-id">#app</span> <span class="hljs-selector-class">.parent</span> <span class="hljs-selector-class">.sibling</span> <span class="hljs-selector-tag">ul</span> &gt; <span class="hljs-selector-tag">li</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">2px</span> <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-id">#app</span> <span class="hljs-selector-class">.parent</span> <span class="hljs-selector-class">.sibling</span> <span class="hljs-selector-tag">ol</span> &gt; <span class="hljs-selector-tag">li</span><span class="hljs-selector-pseudo">:first</span>-of-type,
+<span class="hljs-selector-id">#app</span> <span class="hljs-selector-class">.parent</span> <span class="hljs-selector-class">.sibling</span> <span class="hljs-selector-tag">ul</span> &gt; <span class="hljs-selector-tag">li</span><span class="hljs-selector-pseudo">:first</span>-of-type {
+  <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">32px</span>;
+}
+
+<span class="hljs-selector-id">#app</span> <span class="hljs-selector-class">.parent</span> <span class="hljs-selector-class">.sibling</span> <span class="hljs-selector-tag">ol</span> &gt; <span class="hljs-selector-tag">li</span><span class="hljs-selector-pseudo">:last-of-type</span>,
+<span class="hljs-selector-id">#app</span> <span class="hljs-selector-class">.parent</span> <span class="hljs-selector-class">.sibling</span> <span class="hljs-selector-tag">ul</span> &gt; <span class="hljs-selector-tag">li</span><span class="hljs-selector-pseudo">:last-of-type</span> {
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">32px</span>;
+}
+</code></pre>
+<p>🤔 <strong>Do you notice some problem here?</strong></p>
+<ol>
+<li>The same parent selectors are re-written multiple times. It just not DRY.</li>
+<li>Looks like too much code for a very simple requirement</li>
+<li>No clear sturcture of visual hieriarchy</li>
+<li>It can be a maintenance nightmare in case we had to change parent or sibling classes. </li>
+</ol>
+<h2 id="how-pre-processors-try-to-solve-the-problem">How pre-processors try to solve the problem</h2>
+<p>Let&#39;s see how CSS Pre-processors like SASS solves this problem. This is how the SASS equivalent of the above code would look like:</p>
+<pre><code class="language-css"><span class="hljs-selector-id">#app</span> <span class="hljs-selector-class">.parent</span> <span class="hljs-selector-class">.sibling</span> {
+  <span class="hljs-selector-tag">ol</span>,
+  <span class="hljs-selector-tag">ul</span> {
+    &gt; <span class="hljs-selector-tag">li</span> {
+      <span class="hljs-attribute">margin</span>: <span class="hljs-number">2px</span> <span class="hljs-number">0</span>;
+
+      &amp;<span class="hljs-selector-pseudo">:first</span>-of-type {
+        <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">32px</span>;
+      }
+
+      &amp;<span class="hljs-selector-pseudo">:last-of-type</span> {
+        <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">32px</span>;
+      }
+    }
+  }
+}
+</code></pre>
+<p>🤗 <strong>Waoo!! look at that! The benifits are clearly visible:</strong></p>
+<ol>
+<li>More natural syntax and easy to read in most cases</li>
+<li>Prevents the need to rewrite selectors multiple times</li>
+<li>Better code organization and structure thanks to its visual hierarchy, which bring us to...</li>
+<li>More maintainable code.</li>
+</ol>
+<p>⚠️ <strong>A side warning!</strong></p>
+<p>Use nesting only where there is a clear context selector, for example a component. Nesting too deeply is not considered a good practice. The deeper you nest, the more verbose the SASS file becomes and the larger the compiled CSS will potentially be, since the nesting is flattened when compiled. So, overuse of nesting can create:</p>
+<ul>
+<li>Overly specific CSS rules that are hard to maintain</li>
+<li>Selectors that cannot be reused</li>
+<li>Performance issues. Nested selectors will create a long CSS selector string that will end up generating a bigger CSS file </li>
+<li>Hard to text search and</li>
+<li>Over use can make it very hard to reason about and make it very unreadable</li>
+</ul>
+<p>👵 <strong>Your grandma wa correct. Everything in moderation!!. Too much of everything is bad.</strong></p>
+<blockquote>
+<p>Nesting can be incredibly useful if used wisely.</p>
+</blockquote>
+<h2 id="the-power-of">The Power of <code>&amp;</code></h2>
+<p>Let us understand the wonderful little character ampersand (&amp;) a little more. In Sass, &amp; references the parent selector of a declaration block, allowing the selector to be referenced from within <strong>itself</strong>.</p>
+<p><img src="img/andselector.png" alt=""></p>
+<p>This means things like pseudo selectors, sibling selectors, and so on can be referenced and grouped with that selector’s other declarations. &amp; is a powerful tool to organize and extend your Sass.</p>
+<p>The key to understanding the power of <code>&amp;</code> in Sass is its <strong>placement</strong> in a declaration. In the above examples,  <code>&amp;</code> was the first character, but there are cases where &amp; can be used later in a declaration. In situations where the parent containing the selector causes the styles of the selector to change, we can reference the parent selector from within the selector’s declaration block. This is done by adding the parent selector before &amp; in a new declaration block.</p>
+<p>In the following illustration you can see how SASS spits out different CSS based on the placement of <code>&amp;</code>.</p>
+<p><img src="img/parent-nesting-css.png" alt=""></p>
+<p>Scenario: If the <code>#app</code> contains a class called <code>.dark-theme</code> we need to invert the color of list items. We want to keep the code inside our context to keep it organised and at one place.</p>
+<p>Our Sass code for the above scenario could look something like this:</p>
+<pre><code class="language-css"><span class="hljs-selector-class">.parent</span> <span class="hljs-selector-class">.sibling</span> {
+  <span class="hljs-selector-tag">ol</span>,
+  <span class="hljs-selector-tag">ul</span> {
+    &gt; <span class="hljs-selector-tag">li</span> {
+      <span class="hljs-attribute">margin</span>: <span class="hljs-number">2px</span> <span class="hljs-number">0</span>;
+
+      <span class="hljs-selector-id">#app</span><span class="hljs-selector-class">.dark-theme</span> &amp; {
+        <span class="hljs-attribute">color</span>: white;
+        <span class="hljs-attribute">background-color</span>: black;
+      }
+
+      &amp;<span class="hljs-selector-pseudo">:first</span>-of-type {
+        <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">32px</span>;
+      }
+
+      &amp;<span class="hljs-selector-pseudo">:last-of-type</span> {
+        <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">32px</span>;
+      }
+    }
+  }
+}
+</code></pre>
+<p>And the out-put could looke similar to the following (if <code>#app</code> div contains the class <code>.dark-theme</code>):
+<img src="img/dark-theme-preview.png" alt=""></p>
+<p>Awesome!!</p>
+<p>Feel free to practice and fiddle around with the above SASS example <a href="https://jsfiddle.net/drupalastic/yvsc1be7/8/"><strong>here</strong></a> </p>
+<h2 id="the-need-of-nesting-in-native-css">The need of nesting in native CSS?</h2>
+<p>CSS Pre-processors are doing a decent job! aren&#39;t they?. Why do we even need nesting in the native CSS?</p>
+<p>We once raised similar kind of question of CSS Custom Properties as well. Sass style <code>$variables</code> were very useful but now, as far as possible, we never use them over CSS Custom Properties. Custom Properties took a while but boy did they make up for turning up late – as part of the language they are infinitely more powerful than Sass style variable plus <strong>malleable with JS</strong> too.</p>
+<p>Sass variable are not after the compilation when they reach the browser. This just make it totally useless with Javascript. But in case of CSS Custom Properties, <strong>What we write is what browser gets</strong>. An this opens up a world of possililites. It much better to change a CSS Custom Property by Javascript than to inject css in DOM.</p>
+<p>Here are a couple of benifits of nesting in native CSS that I can think of:</p>
+<ul>
+<li>CSS Pre-processing takes time. In large project it is a big-time time killer.</li>
+<li>CSS file size can, in some cases, be dramatically reduced. Remember that preprocessors ultimately transpile into standard CSS, so what you write isn’t quite what the browser gets.</li>
+</ul>
+<h2 id="w3c-css-nesting---editors-draft">W3C CSS Nesting - Editor&#39;s draft</h2>
+<p>Yes, it’s an Editor’s Draft, meaning it — and by extension everything we discuss here — is subject to major changes through its development, but in my opinion, the fact that it’s a W3C draft! is in itself worth exploring.</p>
+<h2 id="the-nesting-selector">The nesting selector <code>&amp;</code></h2>
+<p>When using a nested style rule, one must be able to refer to the elements matched by the parent rule; that is, after all, the entire point of nesting. To accomplish that, this specification defines a new selector, the nesting selector, written as an ASCII ampersand <code>&amp;</code>.</p>
+<p>The way <code>&amp;</code> is proposed to work natively is quite similar to the way it works in SASS. </p>
+<p>For example following is a <strong>valid</strong> syntax as per the draft:</p>
+<pre><code class="language-css"><span class="hljs-selector-class">.foo</span> {
+  <span class="hljs-attribute">color</span>: blue;
+  &amp; <span class="hljs-selector-class">.bar</span> { <span class="hljs-attribute">color</span>: red; }
+}
+
+<span class="hljs-comment">/* equivalent to
+   .foo { color: blue; }
+   .foo .bar { color: red; }
+ */</span>
+</code></pre>
+<p>But one major difference to be noted here is that even for direct nesting, we require the nesting selector <code>&amp;</code>. </p>
+<p>The followig is an invalid syntax:</p>
+<pre><code class="language-css"><span class="hljs-selector-class">.foo</span> {
+  <span class="hljs-attribute">color</span>: red;
+  <span class="hljs-selector-class">.bar</span> { <span class="hljs-attribute">color</span>: blue; }
+}
+
+<span class="hljs-comment">/* Invalid because there’s no nesting selector */</span>
+</code></pre>
+<p>So, when ever the parser will encounter <code>&amp;</code> it will get to know that some sort of nesting is going on. The parser will happily be able to parse the nesting styles if <strong>before</strong> the nested selectors it is able to find an <code>&amp;</code></p>
+<p>Hence, all of these are going to be valid nestings: <code>&amp; &gt; .bar</code> , <code>&amp;.bar</code> , <code>&amp; + .baz, &amp;.qux</code>, <code>&amp;:not(.foo,.bar) &gt; .baz</code>, <code>&amp;:is(.bar, &amp;.baz)</code> . You can clearly see a pattern here that before nested selectors we always have an <code>&amp;</code>. </p>
+<p>It doesn’t matter if the &amp; appears before a combinator or directly before another simple selector; as long as it appears at the very beginning of each complex selector, the rule can be directly nested.</p>
+<p>Cool!! and Super reasonable. The use of &amp; in a case where it’s typically not needed when using a preprocessor. The key difference between standard nesting and what we’re used to is that the nesting selector must appear in all the complex selectors of a nested style rule. This is to accommodate a limitation in the current, tried and true implementation of selector parsers, which the spec details in the introduction of section 3.</p>
+<p>But what about the parent selectors within child selectors?</p>
+<p>The following becomes invalid:</p>
+<pre><code class="language-css"><span class="hljs-selector-class">.foo</span> {
+  <span class="hljs-attribute">color</span>: red;
+  <span class="hljs-selector-class">.parent-class</span> &amp; { <span class="hljs-attribute">color</span>: blue; }
+}
+
+<span class="hljs-comment">/* Invalid because &amp; isn’t in the first compound selector */</span>
+</code></pre>
+<p>The parser wont be able to parse <code>.parent-class &amp;</code>. </p>
+<h2 id="the-nesting-at-rule-nest">The Nesting At-Rule: <code>@nest</code></h2>
+<p>In order to allow the valid nesting selectors like  <code>.parent-class &amp;</code> and also to provide a little more robustness to the feature of nesting, the secification defines the <code>@nest</code> rule. The actual nesting magic still happens with <code>&amp;</code>. But adding <code>@nest</code> before the nested selector gives more flexiblity on the placement of <code>&amp;</code></p>
+<blockquote>
+<p>The magic of nesting still happends because of <code>&amp;</code>. <code>@nest</code> just adds a little more robustness and flexibility to the syntax.</p>
+</blockquote>
+<p>Now with the help of <code>@nest</code> the following is completely valid as per the specification:</p>
+<pre><code class="language-css"><span class="hljs-selector-class">.foo</span> {
+  <span class="hljs-attribute">color</span>: red;
+  <span class="hljs-keyword">@nest</span> .parent-class &amp; { <span class="hljs-attribute">color</span>: blue; }
+}
+</code></pre>
+<p>Putting a <code>@nest</code> here too wont do any harm:</p>
+<pre><code class="language-css"><span class="hljs-selector-class">.foo</span> {
+  <span class="hljs-attribute">color</span>: red;
+  <span class="hljs-keyword">@nest</span> &amp; .bar { <span class="hljs-attribute">color</span>: blue; }
+}
+</code></pre>
+<p>Along with direct nesting, the <code>@nest</code> at-rule is introduced so we can explicitly nest any rule that contains a nesting selector anywhere in each of its complex selectors.</p>
+<p>The exact same SASS example above, when written in plain CSS, in future will look like the following as per the current draft:</p>
+<pre><code class="language-css"><span class="hljs-selector-id">#app</span> <span class="hljs-selector-class">.parent</span> <span class="hljs-selector-tag">div</span> {
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> dashed brown;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">5px</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">5px</span>;
+}
+
+<span class="hljs-selector-class">.parent</span> <span class="hljs-selector-class">.sibling</span> {
+  &amp; <span class="hljs-selector-tag">ol</span>,
+  &amp; <span class="hljs-selector-tag">ul</span> {
+    &amp; &gt; <span class="hljs-selector-tag">li</span> {
+      <span class="hljs-attribute">margin</span>: <span class="hljs-number">2px</span> <span class="hljs-number">0</span>;
+
+      <span class="hljs-keyword">@nest</span> #app.dark-theme &amp; {
+        <span class="hljs-attribute">color</span>: white;
+        <span class="hljs-attribute">background-color</span>: black;
+      }
+
+      &amp;<span class="hljs-selector-pseudo">:first</span>-of-type {
+        <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">32px</span>;
+      }
+
+      &amp;<span class="hljs-selector-pseudo">:last-of-type</span> {
+        <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">32px</span>;
+      }
+    }
+  }
+}
+</code></pre>
+<p>Feel free to practice and play around with the The nesting selector <code>&amp;</code> and the <code>@nest</code> at-rule <a href="https://jsfiddle.net/drupalastic/4cw9k63n/137/"><strong>here</strong></a></p>
+<h2 id="test-your-knowledge---true-false">Test your knowledge - true false</h2>
+<h2 id="test-your-knowledge---practice-project">Test your knowledge - practice project</h2>
+<p>may be intentionally break things and ask them to fix.</p>
+
+        <!-- endinject -->
       </div>
 
     </div>
