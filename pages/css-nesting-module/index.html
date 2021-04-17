@@ -33,9 +33,9 @@
 <br>
 
 <ol>
-<li>We will begin by understand the problems that common CSS pre-processors like Sass solves using nesting.</li>
+<li>We will begin by understand the problems that common CSS pre-processors like Sass solves using <strong>nesting</strong>.</li>
 <li>Look at some limitations of using pre-processors all the time.</li>
-<li>Finally the most exciting part!. Well learn how CSS Working Group is proposing to solve this problem. </li>
+<li>Finally the most exciting part!. Well learn how CSS Working Group is proposing to solve this problem natively. </li>
 </ol>
 <h2 id="the-problem">The Problem</h2>
 <p>Let&#39;s look at a very simple at the same time a very real world example:</p>
@@ -69,7 +69,7 @@
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-comment">&lt;!-- parent ends --&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-comment">&lt;!-- #app ends --&gt;</span>
 </code></pre>
-<p>Scenario: There are some styles specific to different lists inside <code>.sibling</code>. The styles are specific to <code>.parent</code> inside <code>#app</code>. We need to reduce the <code>margin-top</code> and <code>margin-bottom</code> of list items to <code>2px</code> and keep the <code>margin-top</code> of the first list-item and the <code>margin-bottom</code> of the last list item to 32px.</p>
+<p><strong>Scenario</strong>: There are some styles specific to different lists inside <code>.sibling</code>. The styles are specific to <code>.parent</code> inside <code>#app</code>. We need to reduce the <code>margin-top</code> and <code>margin-bottom</code> of list items to <code>2px</code> and keep the <code>margin-top</code> of the first list-item and the <code>margin-bottom</code> of the last list item to 32px.</p>
 <p>The css would look like the following:</p>
 <pre><code class="language-css"><span class="hljs-selector-id">#app</span> <span class="hljs-selector-class">.parent</span> <span class="hljs-selector-class">.sibling</span> <span class="hljs-selector-tag">ol</span> &gt; <span class="hljs-selector-tag">li</span>,
 <span class="hljs-selector-id">#app</span> <span class="hljs-selector-class">.parent</span> <span class="hljs-selector-class">.sibling</span> <span class="hljs-selector-tag">ul</span> &gt; <span class="hljs-selector-tag">li</span> {
@@ -276,6 +276,8 @@
 <p>Fix the following broken practice-fiddle. The <code>li</code>&#39;s doesn&#39;t look black in the practice-fiddle.
 <img src="img/ex-2.png" alt=""></p>
 <p><a href="https://jsfiddle.net/drupalastic/4cw9k63n/177/"><strong>practice-fiddle</strong></a> | <a href="https://jsfiddle.net/drupalastic/4cw9k63n/169/"><strong>solution-fiddle</strong></a></p>
+<h2 id="video-walkthrough">Video Walkthrough</h2>
+<p><a href="https://www.loom.com/share/faddd5964da6434b93bc4e1827368497">https://www.loom.com/share/faddd5964da6434b93bc4e1827368497</a></p>
 
         <!-- endinject -->
       </div>

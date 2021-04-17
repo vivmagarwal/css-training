@@ -10,9 +10,9 @@ In the tweet Adam Argyle linked to the latest [CSS Nesting Module](https://t.co/
 
 <br>
 
-1. We will begin by understand the problems that common CSS pre-processors like Sass solves using nesting.
+1. We will begin by understand the problems that common CSS pre-processors like Sass solves using **nesting**.
 2. Look at some limitations of using pre-processors all the time.
-3. Finally the most exciting part!. Well learn how CSS Working Group is proposing to solve this problem. 
+3. Finally the most exciting part!. Well learn how CSS Working Group is proposing to solve this problem natively. 
 
 ## The Problem
 
@@ -52,7 +52,7 @@ There are two `.sibling` elements. They have a `.parent` which is inside our `#a
 </div><!-- #app ends -->
 ```
 
-Scenario: There are some styles specific to different lists inside `.sibling`. The styles are specific to `.parent` inside `#app`. We need to reduce the `margin-top` and `margin-bottom` of list items to `2px` and keep the `margin-top` of the first list-item and the `margin-bottom` of the last list item to 32px.
+**Scenario**: There are some styles specific to different lists inside `.sibling`. The styles are specific to `.parent` inside `#app`. We need to reduce the `margin-top` and `margin-bottom` of list items to `2px` and keep the `margin-top` of the first list-item and the `margin-bottom` of the last list item to 32px.
 
 The css would look like the following:
 ```css
@@ -327,3 +327,8 @@ Fix the following broken practice-fiddle. The `li`'s doesn't look black in the p
 ![](img/ex-2.png)
 
 [**practice-fiddle**](https://jsfiddle.net/drupalastic/4cw9k63n/177/) | [**solution-fiddle**](https://jsfiddle.net/drupalastic/4cw9k63n/169/)
+
+
+## Video Walkthrough
+
+https://www.loom.com/share/faddd5964da6434b93bc4e1827368497
