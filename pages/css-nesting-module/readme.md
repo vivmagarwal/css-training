@@ -8,6 +8,8 @@ In the tweet Adam Argyle linked to the latest [CSS Nesting Module](https://t.co/
 
 ✍️ **Here are the few points that we are going to cover in this lesson:**
 
+<br>
+
 1. We will begin by understand the problems that common CSS pre-processors like Sass solves using nesting.
 2. Look at some limitations of using pre-processors all the time.
 3. Finally the most exciting part!. Well learn how CSS Working Group is proposing to solve this problem. 
@@ -303,6 +305,25 @@ Feel free to practice and play around with the The nesting selector `&` and the 
 
 ## Practical CSS Nesting Exercises
 
-may be intentionally break things and ask them to fix.
+### Exercise 1.
 
-In the video I may say that I have provided practice-fiddle and solution-fiddle both for you. but I'll encourage you to try out things yourself before peeking into the solution.
+Modify the practice-fiddle to just make the color of the `li`'s inside `ul` red by making use of `@nest` at-rule
+![](img/ex-1.png) 
+
+[**practice-fiddle**](https://jsfiddle.net/drupalastic/4cw9k63n/166/) | [**solution-fiddle**](https://jsfiddle.net/drupalastic/4cw9k63n/165/)
+
+
+### Exercise 2.
+
+Fix the following broken practice-fiddle, The `li`'s doesn't look black in the practice-fiddle.
+![](img/ex-2.png)
+
+[**practice-fiddle**](https://jsfiddle.net/drupalastic/4cw9k63n/171/) | [**solution-fiddle**](https://jsfiddle.net/drupalastic/4cw9k63n/169/)
+
+
+### Exercise 3.
+
+Fix the following broken practice-fiddle. The `li`'s doesn't look black in the practice-fiddle.
+![](img/ex-2.png)
+
+[**practice-fiddle**](https://jsfiddle.net/drupalastic/4cw9k63n/177/) | [**solution-fiddle**](https://jsfiddle.net/drupalastic/4cw9k63n/169/)
