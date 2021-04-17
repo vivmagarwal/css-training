@@ -21,35 +21,6 @@
         </ul>
       </div>
 
-      <div id="app" class="dark-theme">
-        <div class="parent">
-          parent
-
-          <div class="sibling sibling1">
-            sibling1
-            <div class="grandchild grandchild1">
-              grandchild 1
-            </div>
-          </div><!-- sibling1 ends -->
-
-          <div class="sibling sibling2">
-            sibling2
-            <ul>
-              <li>Coffee</li>
-              <li>Tea</li>
-              <li>Milk</li>
-            </ul>
-            <ol>
-              <li>Exercise</li>
-              <li>Wrok</li>
-              <li>play</li>
-            </ol>
-          </div><!-- sibling2 ends -->
-        
-        </div><!-- parent ends -->
-      </div><!-- #app ends -->
-
-
       <div
         class="injected-readme">
         <!-- inject:readme:md -->
@@ -155,7 +126,7 @@
 <li>Hard to text search and</li>
 <li>Over use can make it very hard to reason about and make it very unreadable</li>
 </ul>
-<p>👵 <strong>Your grandma wa correct. Everything in moderation!!. Too much of everything is bad.</strong></p>
+<p>👵 <strong>Your grandma was correct. Everything in moderation!!. Too much of everything is bad.</strong></p>
 <blockquote>
 <p>Nesting can be incredibly useful if used wisely.</p>
 </blockquote>
@@ -290,12 +261,53 @@
 }
 </code></pre>
 <p>Feel free to practice and play around with the The nesting selector <code>&amp;</code> and the <code>@nest</code> at-rule <a href="https://jsfiddle.net/drupalastic/4cw9k63n/137/"><strong>here</strong></a></p>
-<h2 id="test-your-knowledge---true-false">Test your knowledge - true false</h2>
-<h2 id="test-your-knowledge---practice-project">Test your knowledge - practice project</h2>
+<h2 id="practical-css-nesting-exercises">Practical CSS Nesting Exercises</h2>
 <p>may be intentionally break things and ask them to fix.</p>
+<p>In the video I may say that I have provided practice-fiddle and solution-fiddle both for you. but I&#39;ll encourage you to try out things yourself before peeking into the solution.</p>
 
         <!-- endinject -->
       </div>
+
+
+
+      <div class="app app--quiz">
+        <h2>Test your knowledge</h2>
+
+        <div id="quiz"></div>
+        <button id="submit">Get Results</button>
+        <div id="results"></div>
+      
+      </div>
+
+
+      <h2>The Demo App Result</h2>
+      <div id="app" class="dark-theme app app-practice-app">
+        <div class="parent">
+          parent
+
+          <div class="sibling sibling1">
+            sibling1
+            <div class="grandchild grandchild1">
+              grandchild 1
+            </div>
+          </div><!-- sibling1 ends -->
+
+          <div class="sibling sibling2">
+            sibling2
+            <ul>
+              <li>Coffee</li>
+              <li>Tea</li>
+              <li>Milk</li>
+            </ul>
+            <ol>
+              <li>Exercise</li>
+              <li>Wrok</li>
+              <li>play</li>
+            </ol>
+          </div><!-- sibling2 ends -->
+        
+        </div><!-- parent ends -->
+      </div><!-- #app ends -->
 
     </div>
     <script type="module" defer src="script.js"></script>

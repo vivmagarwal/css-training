@@ -116,7 +116,7 @@ Use nesting only where there is a clear context selector, for example a componen
 - Hard to text search and
 - Over use can make it very hard to reason about and make it very unreadable
 
-👵 **Your grandma wa correct. Everything in moderation!!. Too much of everything is bad.**
+👵 **Your grandma was correct. Everything in moderation!!. Too much of everything is bad.**
 
 > Nesting can be incredibly useful if used wisely.
 
@@ -301,8 +301,8 @@ The exact same SASS example above, when written in plain CSS, in future will loo
 
 Feel free to practice and play around with the The nesting selector `&` and the `@nest` at-rule [**here**](https://jsfiddle.net/drupalastic/4cw9k63n/137/)
 
-## Test your knowledge - true false
-
-## Test your knowledge - practice project
+## Practical CSS Nesting Exercises
 
 may be intentionally break things and ask them to fix.
+
+In the video I may say that I have provided practice-fiddle and solution-fiddle both for you. but I'll encourage you to try out things yourself before peeking into the solution.

@@ -29,3 +29,30 @@
     }
   }
 }
+
+// quiz app
+.app--quiz {
+  code {
+    display: inline;
+    font-family: Consolas, Monaco, monospace;
+    font-size: 10pt;
+    overflow-x: auto;
+    padding: 0.5em;
+    scrollbar-width: thin;
+    -moz-tab-size: 2;
+    tab-size: 2;
+    overflow-x: auto;
+    color: #2f3337;
+    background: none;
+    border: none;
+    padding: .5em;
+  }
+}
+
+.question{
+  font-weight: 600;
+}
+
+.answers {
+  margin-bottom: 20px;
+}
