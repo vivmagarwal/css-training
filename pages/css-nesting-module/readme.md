@@ -2,7 +2,7 @@
 
 Adam Arglye's recent tweet super excited me 🤩. But why?
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">@ Nest Level 1 (draft)<br><br>`@ nest &gt; div &gt; &amp; { color: red }`<br>`foo { &amp; bar { color: red } }`<a href="https://t.co/Q7IK7gbhdG">https://t.co/Q7IK7gbhdG</a></p>&mdash; Adam Argyle (@argyleink) <a href="https://twitter.com/argyleink/status/1369318354163437568?ref_src=twsrc%5Etfw">March 9, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+![](img/tweet.png)
 
 In the tweet Adam Argyle linked to the latest [CSS Nesting Module](https://t.co/Q7IK7gbhdG?amp=1) draft that Tab Atkins and he are working on.
 
